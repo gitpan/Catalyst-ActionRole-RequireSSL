@@ -1,10 +1,17 @@
+Changes
 LICENSE
 MANIFEST
+META.json
 META.yml
 Makefile.PL
 README
 dist.ini
 lib/Catalyst/ActionRole/NoSSL.pm
 lib/Catalyst/ActionRole/RequireSSL.pm
+lib/Catalyst/ActionRole/RequireSSL/Role.pm
+t/01_use.t
+t/10_ssl.t
+t/lib/TestApp.pm
+t/lib/TestApp/Controller/Root.pm
 t/release-pod-coverage.t
 t/release-pod-syntax.t

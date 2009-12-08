@@ -1,0 +1,17 @@
+{
+   "generated_by" : "Dist::Zilla version 1.092680",
+   "meta-spec" : {
+      "version" : 1.4,
+      "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
+   },
+   "version" : "0.02",
+   "name" : "Catalyst-ActionRole-RequireSSL",
+   "author" : [
+      "Simon Elliott <cpan@papercreatures.com>"
+   ],
+   "license" : "perl",
+   "requires" : {
+      "Moose::Role" : "0"
+   },
+   "abstract" : "Force an action to be (in)secure only."
+}

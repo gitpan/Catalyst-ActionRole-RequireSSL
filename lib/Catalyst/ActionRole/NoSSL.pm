@@ -1,9 +1,8 @@
 package  Catalyst::ActionRole::NoSSL;
 
 use Moose::Role;
+with 'Catalyst::ActionRole::RequireSSL::Role';
 use namespace::autoclean;
-
-our $VERSION = '0.01';
 
 =head1 NAME
 
@@ -11,11 +10,17 @@ Catalyst::ActionRole::NoSSL - Force an action to be plain.
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
   package MyApp::Controller::Foo;
+our $VERSION = '0.02';
+
+
+our $VERSION = '0.02';
+
+
 
   use parent qw/Catalyst::Controller::ActionRole/;
 
@@ -28,7 +33,10 @@ around execute => sub {
   my $orig = shift;
   my $self = shift;
   my ($controller, $c) = @_;
-  if($c->req->secure) {
+
+  if($c->req->secure && $self->check_chain($c) &&
+    ( $c->req->method ne "POST" || 
+      $c->config->{require_ssl}->{ignore_on_post} )) {
     my $uri = $c->req->uri;
     $uri->scheme('http');
     $c->res->redirect( $uri );
@@ -41,18 +49,13 @@ around execute => sub {
 
 =head1 AUTHOR
 
-Simon Elliott E<cpan@papercreatures.com>
+Simon Elliott <cpan@papercreatures.com>
 
 =head1 THANKS
 
 Andy Grundman, <andy@hybridized.org> for the original RequireSSL Plugin
-t0m (Tomas Doran), zamolxes (Bogdan Lucaciu)
-
-=head1 THANKS
 
 t0m (Tomas Doran), zamolxes (Bogdan Lucaciu)
-
-=head1 BUGS
 
 =head1 COPYRIGHT & LICENSE
 

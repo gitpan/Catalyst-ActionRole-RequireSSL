@@ -1,9 +1,11 @@
 package Catalyst::ActionRole::RequireSSL;
+our $VERSION = '0.02';
+
+
 
 use Moose::Role;
+with 'Catalyst::ActionRole::RequireSSL::Role';
 use namespace::autoclean;
-
-our $VERSION = '0.01';
 
 =head1 NAME
 
@@ -11,16 +13,23 @@ Catalyst::ActionRole::RequireSSL - Force an action to be secure only.
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
   package MyApp::Controller::Foo;
+our $VERSION = '0.02';
+
+
 
   use parent qw/Catalyst::Controller::ActionRole/;
 
   sub bar : Local Does('RequireSSL') { ... }
   sub bar : Local Does('NoSSL') { ... }
+  
+=head2 HIERARCHY
+
+You can chain the SSL Roles to allow 
    
 =cut
 
@@ -33,14 +42,17 @@ around execute => sub {
     $c->config->{require_ssl}->{disabled} = 
       $c->engine->isa("Catalyst::Engine::HTTP") ? 1 : 0;
   }
-
-  if ($c->req->method eq "POST") {
+  #use Data::Dumper;warn Dumper($c->action);
+  if ($c->req->method eq "POST" && !$c->config->{require_ssl}->{ignore_on_post}) {
     $c->error("Cannot secure request on POST") 
   }
+
   unless(
     $c->config->{require_ssl}->{disabled} ||
     $c->req->secure ||
-    $c->req->method eq "POST") {
+    $c->req->method eq "POST" ||
+    !$self->check_chain($c)
+    ) {
     my $uri = $c->req->uri;
     $uri->scheme('https');
     $c->res->redirect( $uri );
@@ -55,14 +67,13 @@ around execute => sub {
 
 =head1 AUTHOR
 
-Simon Elliott E<cpan@papercreatures.com>
+Simon Elliott <cpan@papercreatures.com>
 
 =head1 THANKS
 
 Andy Grundman, <andy@hybridized.org> for the original RequireSSL Plugin
-t0m (Tomas Doran), zamolxes (Bogdan Lucaciu)
 
-=head1 BUGS
+t0m (Tomas Doran), zamolxes (Bogdan Lucaciu)
 
 =head1 COPYRIGHT & LICENSE
 
