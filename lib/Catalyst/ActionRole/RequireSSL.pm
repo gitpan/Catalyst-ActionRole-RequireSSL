@@ -1,11 +1,9 @@
 package Catalyst::ActionRole::RequireSSL;
-our $VERSION = '0.02';
-
-
 
 use Moose::Role;
 with 'Catalyst::ActionRole::RequireSSL::Role';
 use namespace::autoclean;
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -13,14 +11,11 @@ Catalyst::ActionRole::RequireSSL - Force an action to be secure only.
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
   package MyApp::Controller::Foo;
-our $VERSION = '0.02';
-
-
 
   use parent qw/Catalyst::Controller::ActionRole/;
 
@@ -43,7 +38,9 @@ around execute => sub {
       $c->engine->isa("Catalyst::Engine::HTTP") ? 1 : 0;
   }
   #use Data::Dumper;warn Dumper($c->action);
-  if ($c->req->method eq "POST" && !$c->config->{require_ssl}->{ignore_on_post}) {
+  if (!$c->req->secure && $c->req->method eq "POST"
+      && !$c->config->{require_ssl}->{ignore_on_post})
+  {
     $c->error("Cannot secure request on POST") 
   }
 
@@ -58,7 +55,7 @@ around execute => sub {
     $c->res->redirect( $uri );
   } else {
     $c->log->warn("Would've redirected to SSL") 
-      if $c->config->{require_ssl}->{disabled};
+      if $c->config->{require_ssl}->{disabled} && $c->debug;
     $self->$orig( @_ );
   }
 };

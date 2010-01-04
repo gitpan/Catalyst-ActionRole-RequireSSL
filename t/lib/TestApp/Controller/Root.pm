@@ -1,7 +1,5 @@
 package TestApp::Controller::Root;
-our $VERSION = '0.02';
-
-
+our $VERSION = '0.03';
 
 use strict;
 use warnings;
@@ -44,7 +42,7 @@ sub ssl_to_plain : Chained('ssl') PathPart('plain') Args(0) Does("NoSSL") {
 
 sub ssl_to_ssl : Chained('ssl') PathPart('ssl') Args(0) {
   my ( $self, $c ) = @_;
-  $c->response->body('Unsecured')
+  $c->response->body('Secured')
 }
 
 sub plain_to_ssl : Chained('plain') PathPart('ssl') Args(0) Does("RequireSSL") {
@@ -54,7 +52,7 @@ sub plain_to_ssl : Chained('plain') PathPart('ssl') Args(0) Does("RequireSSL") {
 
 sub plain_to_plain : Chained('plain') PathPart('plain') Args(0) {
   my ( $self, $c ) = @_;
-  $c->response->body('Secured')
+  $c->response->body('Unsecured')
 }
 
 sub ssl_chained2 : Chained('plain_chained') PathPart('ssl') Args(0) Does("RequireSSL") {

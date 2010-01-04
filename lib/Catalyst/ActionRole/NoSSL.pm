@@ -3,6 +3,7 @@ package  Catalyst::ActionRole::NoSSL;
 use Moose::Role;
 with 'Catalyst::ActionRole::RequireSSL::Role';
 use namespace::autoclean;
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -10,17 +11,11 @@ Catalyst::ActionRole::NoSSL - Force an action to be plain.
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
   package MyApp::Controller::Foo;
-our $VERSION = '0.02';
-
-
-our $VERSION = '0.02';
-
-
 
   use parent qw/Catalyst::Controller::ActionRole/;
 

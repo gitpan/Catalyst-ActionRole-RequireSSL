@@ -1,11 +1,11 @@
 
 
 This archive contains the distribution Catalyst-ActionRole-RequireSSL, version
-0.02:
+0.03:
 
   Force an action to be (in)secure only.
 
-This software is copyright (c) 2009 by Simon Elliott.
+This software is copyright (c) 2010 by Simon Elliott.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,4 +1,8 @@
-0.02      2009-12-08 12:58:25 UTC
+0.03
+
+- Bugfix + warning change (wreis)
+
+0.02
 
 - Allow chained actions to override parent SSL defaults. This
 will allow you to make every action under a chain not ssl, or an action under
