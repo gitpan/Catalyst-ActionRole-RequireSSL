@@ -11,12 +11,15 @@ WriteMakefile(
   NAME      => 'Catalyst::ActionRole::RequireSSL',
   AUTHOR    => "Simon\ Elliott\ \<cpan\@papercreatures\.com\>",
   ABSTRACT  => "Force\ an\ action\ to\ be\ \(in\)secure\ only\.",
-  VERSION   => '0.03',
+  VERSION   => '0.04',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
     "Moose::Role" => '0',
+    "namespace::autoclean" => '0',
     "Catalyst::Controller::ActionRole" => '0',
+    "Catalyst::Test" => '0',
+    "Catalyst::Action::RenderView" => '0',
   },
   test => {TESTS => 't/*.t'}
 );

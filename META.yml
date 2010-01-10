@@ -9,6 +9,9 @@ meta-spec:
   version: 1.4
 name: Catalyst-ActionRole-RequireSSL
 requires:
+  Catalyst::Action::RenderView: 0
   Catalyst::Controller::ActionRole: 0
+  Catalyst::Test: 0
   Moose::Role: 0
-version: 0.03
+  namespace::autoclean: 0
+version: 0.04

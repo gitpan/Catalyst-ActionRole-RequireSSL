@@ -4,7 +4,7 @@
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "name" : "Catalyst-ActionRole-RequireSSL",
    "author" : [
       "Simon Elliott <cpan@papercreatures.com>"
@@ -12,7 +12,10 @@
    "license" : "perl",
    "requires" : {
       "Moose::Role" : "0",
-      "Catalyst::Controller::ActionRole" : "0"
+      "namespace::autoclean" : "0",
+      "Catalyst::Controller::ActionRole" : "0",
+      "Catalyst::Test" : "0",
+      "Catalyst::Action::RenderView" : "0"
    },
    "abstract" : "Force an action to be (in)secure only."
 }
