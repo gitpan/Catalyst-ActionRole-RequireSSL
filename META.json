@@ -1,10 +1,10 @@
 {
-   "generated_by" : "Dist::Zilla version 1.093400",
    "meta-spec" : {
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "0.04",
+   "generated_by" : "Dist::Zilla version 1.100160",
+   "version" : "0.05",
    "name" : "Catalyst-ActionRole-RequireSSL",
    "author" : [
       "Simon Elliott <cpan@papercreatures.com>"
@@ -13,7 +13,10 @@
    "requires" : {
       "Moose::Role" : "0",
       "namespace::autoclean" : "0",
+      "parent" : "0",
+      "ExtUtils::MakeMaker" : "6.11",
       "Catalyst::Controller::ActionRole" : "0",
+      "Catalyst::Runtime" : "5.8",
       "Catalyst::Test" : "0",
       "Catalyst::Action::RenderView" : "0"
    },

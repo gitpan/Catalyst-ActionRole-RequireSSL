@@ -3,7 +3,7 @@ package Catalyst::ActionRole::RequireSSL;
 use Moose::Role;
 with 'Catalyst::ActionRole::RequireSSL::Role';
 use namespace::autoclean;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 NAME
 
@@ -11,7 +11,7 @@ Catalyst::ActionRole::RequireSSL - Force an action to be secure only.
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 

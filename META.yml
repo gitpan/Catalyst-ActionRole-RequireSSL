@@ -2,7 +2,7 @@
 abstract: 'Force an action to be (in)secure only.'
 author:
   - 'Simon Elliott <cpan@papercreatures.com>'
-generated_by: 'Dist::Zilla version 1.093400'
+generated_by: 'Dist::Zilla version 1.100160'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -11,7 +11,10 @@ name: Catalyst-ActionRole-RequireSSL
 requires:
   Catalyst::Action::RenderView: 0
   Catalyst::Controller::ActionRole: 0
+  Catalyst::Runtime: 5.8
   Catalyst::Test: 0
+  ExtUtils::MakeMaker: 6.11
   Moose::Role: 0
   namespace::autoclean: 0
-version: 0.04
+  parent: 0
+version: 0.05
