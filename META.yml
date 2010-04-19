@@ -17,4 +17,6 @@ requires:
   Moose::Role: 0
   namespace::autoclean: 0
   parent: 0
-version: 0.05
+resources:
+  repository: http://github.com/purge/Catalyst-ActionRole-RequireSSL
+version: 0.06

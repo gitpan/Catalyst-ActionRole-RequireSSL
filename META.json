@@ -1,10 +1,13 @@
 {
+   "resources" : {
+      "repository" : "http://github.com/purge/Catalyst-ActionRole-RequireSSL"
+   },
+   "generated_by" : "Dist::Zilla version 1.100160",
    "meta-spec" : {
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "generated_by" : "Dist::Zilla version 1.100160",
-   "version" : "0.05",
+   "version" : "0.06",
    "name" : "Catalyst-ActionRole-RequireSSL",
    "author" : [
       "Simon Elliott <cpan@papercreatures.com>"
