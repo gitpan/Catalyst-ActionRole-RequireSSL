@@ -2,7 +2,12 @@
 abstract: 'Force an action to be (in)secure only.'
 author:
   - 'Simon Elliott <cpan@papercreatures.com>'
-generated_by: 'Dist::Zilla version 1.100160'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300037, CPAN::Meta::Converter version 2.131560'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -13,10 +18,9 @@ requires:
   Catalyst::Controller::ActionRole: 0
   Catalyst::Runtime: 5.8
   Catalyst::Test: 0
-  ExtUtils::MakeMaker: 6.11
   Moose::Role: 0
   namespace::autoclean: 0
   parent: 0
 resources:
-  repository: http://github.com/purge/Catalyst-ActionRole-RequireSSL
-version: 0.06
+  repository: git://github.com/papercreatures/Catalyst-ActionRole-RequireSSL.git
+version: 0.07

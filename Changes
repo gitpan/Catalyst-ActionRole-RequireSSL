@@ -1,3 +1,8 @@
+0.07      2013-09-05 20:14:06 UTC
+
+- Fix URI building process
+- Update dzil setup
+
 0.06
 
 - Fix for RT#55804

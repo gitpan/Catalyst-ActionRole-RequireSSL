@@ -3,7 +3,7 @@ package  Catalyst::ActionRole::NoSSL;
 use Moose::Role;
 with 'Catalyst::ActionRole::RequireSSL::Role';
 use namespace::autoclean;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 NAME
 
@@ -11,7 +11,7 @@ Catalyst::ActionRole::NoSSL - Force an action to be plain.
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -32,7 +32,7 @@ around execute => sub {
   if($c->req->secure && $self->check_chain($c) &&
     ( $c->req->method ne "POST" || 
       $c->config->{require_ssl}->{ignore_on_post} )) {
-    my $uri = $c->req->uri;
+    my $uri = $c->req->uri->clone;
     $uri->scheme('http');
     $c->res->redirect( $uri );
     $c->detach();

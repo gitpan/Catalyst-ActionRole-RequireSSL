@@ -1,9 +1,11 @@
 package Catalyst::ActionRole::RequireSSL;
+{
+  $Catalyst::ActionRole::RequireSSL::VERSION = '0.07';
+}
 
 use Moose::Role;
 with 'Catalyst::ActionRole::RequireSSL::Role';
 use namespace::autoclean;
-our $VERSION = '0.06';
 
 =head1 NAME
 
@@ -11,7 +13,7 @@ Catalyst::ActionRole::RequireSSL - Force an action to be secure only.
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -52,7 +54,7 @@ around execute => sub {
     $c->req->method eq "POST" ||
     !$self->check_chain($c)
     ) {
-    my $uri = $c->req->uri;
+    my $uri = $c->req->uri->clone;
     $uri->scheme('https');
     $c->res->redirect( $uri );
     $c->detach();
@@ -73,7 +75,7 @@ Simon Elliott <cpan@papercreatures.com>
 
 Andy Grundman, <andy@hybridized.org> for the original RequireSSL Plugin
 
-t0m (Tomas Doran), zamolxes (Bogdan Lucaciu)
+t0m (Tomas Doran), zamolxes (Bogdan Lucaciu), wreis (Wallace Reis)
 
 =head1 COPYRIGHT & LICENSE
 
